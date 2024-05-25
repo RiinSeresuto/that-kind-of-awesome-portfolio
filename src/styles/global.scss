@@ -1,0 +1,70 @@
+@import url("https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap");
+
+:root {
+	--step--2: clamp(0.6944rem, 0.6577rem + 0.1836vi, 0.8rem);
+	--step--1: clamp(0.8333rem, 0.7754rem + 0.2899vi, 1rem);
+	--step-0: clamp(1rem, 0.913rem + 0.4348vi, 1.25rem);
+	--step-1: clamp(1.2rem, 1.0739rem + 0.6304vi, 1.5625rem);
+	--step-2: clamp(1.44rem, 1.2615rem + 0.8924vi, 1.9531rem);
+	--step-3: clamp(1.728rem, 1.4799rem + 1.2407vi, 2.4414rem);
+	--step-4: clamp(2.0736rem, 1.7334rem + 1.7011vi, 3.0518rem);
+	--step-5: clamp(2.4883rem, 2.027rem + 2.3067vi, 3.8147rem);
+	--step-6: clamp(2.986rem, 2.366rem + 3.0998vi, 4.7684rem);
+
+	--white-chalk: #f6f4f1;
+	--butter-white: #fddebe;
+	--flamingo: #e1634f;
+	--wildness-min: #5d9865;
+	--mizukaze-green: #1a3f2c;
+	--black-emerald: #12221d;
+
+	--primary: var(--wildness-min);
+	--secondary: var(--mizukaze-green);
+	--tertiary: var(--butter-white);
+	--danger: var(--flamingo);
+	--light: var(--white-chalk);
+	--dark: var(--black-emerald);
+
+	--grid-max-width: 77.5rem;
+	--grid-gutter: var(--space-s-l, clamp(1rem, 0.4783rem + 2.6087vw, 2.5rem));
+	--grid-columns: 12;
+
+	--headerHeight: 75px;
+}
+
+body::-webkit-scrollbar {
+	background-color: var(--tertiary);
+
+	width: 5px;
+}
+
+body::-webkit-scrollbar-thumb {
+	background-color: var(--primary);
+	border-radius: 3px;
+}
+
+* {
+	font-family: "Mulish", sans-serif;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	min-height: 100vh;
+	background-color: var(--light);
+}
+
+.container {
+	max-width: var(--grid-max-width);
+	width: 100%;
+	padding-inline: var(--grid-gutter);
+	margin-inline: auto;
+}
+
+.grid {
+	display: grid;
+	gap: var(--grid-gutter);
+	grid-template-columns: 3fr 1fr;
+	width: 100%;
+}

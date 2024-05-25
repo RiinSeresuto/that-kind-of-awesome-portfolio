@@ -1,0 +1,176 @@
+---
+let skills = [
+	{
+		name: "HTML",
+		logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg",
+	},
+	{
+		name: "CSS",
+		logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg",
+	},
+	{
+		name: "JavaScript",
+		logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg",
+	},
+	{
+		name: "PHP",
+		logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg",
+	},
+	{
+		name: "MySQL",
+		logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original-wordmark.svg",
+	},
+	{
+		name: "React",
+		logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original-wordmark.svg",
+	},
+	{
+		name: "Next JS",
+		logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg",
+	},
+	{
+		name: "Astro",
+		logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/astro/astro-original.svg",
+	},
+	{
+		name: "Yii",
+		logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/yii/yii-original.svg",
+	},
+	// {
+	// 	name: "CSS",
+	// 	logo: "",
+	// },
+	// {
+	// 	name: "CSS",
+	// 	logo: "",
+	// },
+];
+
+const skillsCount = skills.length;
+const animationDuration = "30s";
+---
+
+<style lang="scss" define:vars={{ animationDuration }}>
+	#hero-content {
+		display: block;
+		width: 100%;
+	}
+
+	.hero--title {
+		font-size: var(--step-4);
+		color: var(--secondary);
+	}
+
+	.hero--subtitle {
+		font-style: italic;
+		font-size: var(--step-1);
+
+		#animatedWords {
+			color: var(--primary);
+			transition: opacity 0.5s ease-in-out;
+		}
+
+		#animatedWords.fade {
+			opacity: 0;
+		}
+	}
+
+	.hero--skills {
+		margin: var(--step-6) 0;
+
+		.hero--skills-title {
+			color: var(--secondary);
+			font-size: var(--step-2);
+			margin-bottom: 1rem;
+		}
+
+		.skills-wrapper {
+			width: 100%;
+			position: relative;
+			height: var(--step-2);
+			overflow: hidden;
+			mask-image: linear-gradient(
+				to right,
+				hsl(0 0% 0% / 0),
+				hsl(0 0% 0% / 1) 20%,
+				hsl(0 0% 0% / 1) 80%,
+				hsl(0 0% 0% / 0)
+			);
+
+			.skills {
+				height: var(--step-2);
+				position: absolute;
+				left: 100%;
+				animation-name: scrollLeft;
+				animation-duration: var(--animationDuration);
+				animation-timing-function: linear;
+				animation-iteration-count: infinite;
+			}
+		}
+	}
+
+	@keyframes scrollLeft {
+		to {
+			left: calc(-1 * var(--step-2));
+		}
+	}
+</style>
+
+<div id="hero-content">
+	<h1 class="hero--title">Full-stack Developer</h1>
+	<p class="hero--subtitle">
+		Hullo, I'm Rene Baribal. <span id="article">A</span>
+		<strong><span id="animatedWords">passionate</span></strong> web application developer
+		<br /> based in the City of Quezon, Philippines
+	</p>
+
+	<div class="hero--skills">
+		<h2 class="hero--skills-title">Skills</h2>
+		<div class="skills-wrapper">
+			{
+				skills.map((skill, index) => (
+					<>
+						<img
+							class="skills"
+							src={skill.logo}
+							title={skill.name}
+							style={`
+                                animation-delay: calc(${animationDuration} / ${skillsCount} * (${skillsCount} - ${index}) * -1)
+                            `}
+						/>
+					</>
+				))
+			}
+		</div>
+	</div>
+</div>
+
+<script>
+	let i = 0;
+	let phrase = ["passionate", "driven", "enthusiastic", "committed"];
+	let currentWord = phrase[0];
+
+	const article = document.getElementById("article");
+	const vowels = ["a", "e", "i", "o", "u"];
+
+	const changingWord = document.getElementById("animatedWords");
+
+	setInterval(() => {
+		changingWord.classList.add("fade");
+
+		setTimeout(() => {
+			currentWord = phrase[(i = (i + 1) % phrase.length)];
+
+			changingWord.textContent = currentWord;
+			changingWord.classList.remove("fade");
+
+			const firstLetter = currentWord.trim().charAt(0).toLowerCase();
+
+			if (vowels.includes(firstLetter)) {
+				article.textContent = "An";
+			} else {
+				article.textContent = "A";
+			}
+		}, 500);
+	}, 2000);
+</script>
