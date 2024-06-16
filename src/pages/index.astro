@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/index/Hero.astro";
+import About from "../components/index/About.astro";
 
 const title = "Home";
 ---
@@ -15,15 +16,23 @@ const title = "Home";
 		</div>
 	</section>
 	<section id="about">
-		<div class="container grid">
-			<div class="col-9">
-				<p>Summary</p>
+		<div class="container">
+			<div class="grid">
+				<About />
+				<div></div>
 			</div>
 		</div>
 	</section>
 	<section id="projects">
 		<div class="container grid">
-			<div class="col-9">Projects</div>
+			<div class="col-9">
+				<p>
+					Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil vitae
+					eos soluta quaerat repudiandae in quos deserunt labore libero,
+					accusantium atque modi excepturi aut, dolore delectus! Ab ducimus iure
+					in!
+				</p>
+			</div>
 		</div>
 	</section>
 </Layout>

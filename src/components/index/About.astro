@@ -1,0 +1,30 @@
+---
+import Programming from "./img/Programming.astro";
+---
+
+<div class="about">
+	<h2 class="about-title">About</h2>
+	<div class="grid2">
+		<div class="about-image">
+			<Programming />
+		</div>
+		<div class="about-text">
+			Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia, earum
+			repellat! Inventore quos maxime animi ipsam, ex quidem quaerat nulla sint
+			exercitationem, distinctio porro dolorum nisi fugiat provident quis sit!
+		</div>
+	</div>
+</div>
+
+<style lang="scss">
+	.about {
+		display: block;
+		width: 100%;
+
+		.grid2 {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 0px 0px;
+		}
+	}
+</style>
