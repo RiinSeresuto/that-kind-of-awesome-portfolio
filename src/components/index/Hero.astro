@@ -1,4 +1,7 @@
 ---
+import { Image } from "astro:assets";
+import computerImage from "../../assets/images/computer.png";
+
 let skills = [
 	{
 		name: "HTML",
@@ -51,19 +54,26 @@ const animationDuration = "30s";
 ---
 
 <style lang="scss" define:vars={{ animationDuration }}>
+	.col-2 {
+		display: grid;
+		grid-template-columns: 3fr 1fr;
+		column-gap: 1rem;
+	}
+
 	#hero-content {
 		display: block;
 		width: 100%;
+		padding: 32px 0;
 	}
 
 	.hero--title {
-		font-size: var(--step-4);
+		font-size: var(--step-3);
 		color: var(--secondary);
 	}
 
 	.hero--subtitle {
 		font-style: italic;
-		font-size: var(--step-1);
+		font-size: var(--step-0);
 
 		#animatedWords {
 			color: var(--primary);
@@ -117,12 +127,27 @@ const animationDuration = "30s";
 </style>
 
 <div id="hero-content">
-	<h1 class="hero--title">Full-stack Developer</h1>
-	<p class="hero--subtitle">
-		Hullo, I'm Rene Baribal. <span id="article">A</span>
-		<strong><span id="animatedWords">passionate</span></strong> web application developer
-		<br /> based in the City of Quezon, Philippines
-	</p>
+	<div class="col-2">
+		<div class="hero-greetings">
+			<h1 class="hero--title">hi! i'm rene🍀</h1>
+			<p class="hero--subtitle">web application developer</p>
+			<p class="herro--about">
+				this is my about section where i tell you by passion for creating very
+				simple application with minimalistic design. i will also tell you that
+				my programming starts with curiousity. additionally, i am also a little
+				bit of a designer who focuses on a simple design yet an effective user
+				experience.
+			</p>
+		</div>
+		<div class="hero-image">
+			<Image
+				src={computerImage}
+				alt="Computer on top of desk with plants around it"
+				style={`width: 100%; height: 100%`}
+				loading={"lazy"}
+			/>
+		</div>
+	</div>
 
 	<div class="hero--skills">
 		<h2 class="hero--skills-title">Skills</h2>
@@ -144,33 +169,3 @@ const animationDuration = "30s";
 		</div>
 	</div>
 </div>
-
-<script>
-	let i = 0;
-	let phrase = ["passionate", "driven", "enthusiastic", "committed"];
-	let currentWord = phrase[0];
-
-	const article = document.getElementById("article");
-	const vowels = ["a", "e", "i", "o", "u"];
-
-	const changingWord = document.getElementById("animatedWords");
-
-	setInterval(() => {
-		changingWord.classList.add("fade");
-
-		setTimeout(() => {
-			currentWord = phrase[(i = (i + 1) % phrase.length)];
-
-			changingWord.textContent = currentWord;
-			changingWord.classList.remove("fade");
-
-			const firstLetter = currentWord.trim().charAt(0).toLowerCase();
-
-			if (vowels.includes(firstLetter)) {
-				article.textContent = "An";
-			} else {
-				article.textContent = "A";
-			}
-		}, 500);
-	}, 2000);
-</script>

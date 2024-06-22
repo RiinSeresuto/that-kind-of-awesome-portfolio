@@ -9,18 +9,12 @@ const title = "Home";
 <Layout title={title}>
 	<section id="hero">
 		<div class="container">
-			<div class="grid">
-				<Hero />
-				<div></div>
-			</div>
+			<Hero />
 		</div>
 	</section>
 	<section id="about">
 		<div class="container">
-			<div class="grid">
-				<About />
-				<div></div>
-			</div>
+			<About />
 		</div>
 	</section>
 	<section id="projects">
@@ -39,13 +33,6 @@ const title = "Home";
 
 <style lang="scss">
 	#hero {
-		min-height: calc(100vh - var(--headerHeight));
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
-
-	#about {
-		background-color: var(--tertiary);
+		height: fit-content;
 	}
 </style>

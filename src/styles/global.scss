@@ -29,7 +29,7 @@
 	--grid-gutter: var(--space-s-l, clamp(1rem, 0.4783rem + 2.6087vw, 2.5rem));
 	--grid-columns: 12;
 
-	--headerHeight: 75px;
+	--container-max-width: 800px;
 }
 
 body::-webkit-scrollbar {
@@ -56,15 +56,8 @@ body {
 }
 
 .container {
-	max-width: var(--grid-max-width);
+	max-width: var(--container-max-width);
 	width: 100%;
 	padding-inline: var(--grid-gutter);
 	margin-inline: auto;
-}
-
-.grid {
-	display: grid;
-	gap: var(--grid-gutter);
-	grid-template-columns: 3fr 1fr;
-	width: 100%;
 }

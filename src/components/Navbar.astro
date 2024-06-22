@@ -1,40 +1,33 @@
-<div class="navbar grid container" id="navbar">
-	<div class="col-9"></div>
-	<div class="col-3">
-		<nav>
-			<a href="#">Home</a>
-			<a href="#">About</a>
-			<a href="#">Projects</a>
-		</nav>
-	</div>
-</div>
+---
+const pathName = new URL(Astro.request.url).pathname;
+const currentPath = pathName.slice(1);
+---
+
+<nav>
+	<a class={currentPath === "" ? "active" : ""} href="/">Home</a>
+	<a class={currentPath === "about" ? "active" : ""} href="/about">About</a>
+	<a class={currentPath === "projects" ? "active" : ""} href="/projects"
+		>Projects</a
+	>
+</nav>
 
 <style lang="scss">
 	nav {
 		display: flex;
-		flex-direction: column;
-		position: sticky;
-		top: 0;
-		width: 100%;
-		height: fit-content;
-		z-index: 100;
+		gap: 16px;
 
 		a {
-			text-decoration: none;
-			color: var(--secondary);
-			font-weight: 600;
-			text-transform: uppercase;
-			padding: 8px 0;
-			font-weight: 900;
-		}
-	}
+			display: block;
+			color: var(--dark);
 
-	.navbar {
-		position: fixed;
-		width: 100%;
-		z-index: 10;
-		top: var(--headerHeight);
-		right: 0;
-		left: 0;
+			padding: 8px 0;
+			text-decoration: none;
+			font-weight: bold;
+
+			&.active {
+				// color: var(--primary);
+				border-bottom: 3.5px solid var(--dark);
+			}
+		}
 	}
 </style>

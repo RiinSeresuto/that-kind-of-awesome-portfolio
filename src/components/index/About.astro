@@ -1,13 +1,7 @@
----
-import Programming from "./img/Programming.astro";
----
-
 <div class="about">
-	<h2 class="about-title">About</h2>
+	<h2 class="about-title">Projects</h2>
 	<div class="grid2">
-		<div class="about-image">
-			<Programming />
-		</div>
+		<div class="about-image"></div>
 		<div class="about-text">
 			Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia, earum
 			repellat! Inventore quos maxime animi ipsam, ex quidem quaerat nulla sint
@@ -20,6 +14,11 @@ import Programming from "./img/Programming.astro";
 	.about {
 		display: block;
 		width: 100%;
+
+		.about-title {
+			font-size: var(--step-3);
+			color: var(--secondary);
+		}
 
 		.grid2 {
 			display: grid;
