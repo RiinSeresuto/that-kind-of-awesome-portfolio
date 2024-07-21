@@ -1,0 +1,13 @@
+---
+import { Image } from "astro:assets";
+
+const { projects } = Astro.props;
+---
+
+<a href="">
+	<h3>{projects.title}</h3>
+	<p>{projects.description}</p>
+	<p>{projects.publishDate}</p>
+
+	<img src={projects.image.src} width="100%" />
+</a>

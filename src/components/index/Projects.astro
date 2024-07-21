@@ -1,5 +1,17 @@
+---
+import { getCollection } from "astro:content";
+
+import Project from "../Project.astro";
+
+const allProjects = await getCollection("projects");
+
+console.log(allProjects);
+---
+
 <div class="about">
 	<h2 class="about-title">Projects</h2>
+
+	{allProjects.map((project) => <Project projects={project.data} />)}
 </div>
 
 <style lang="scss">
