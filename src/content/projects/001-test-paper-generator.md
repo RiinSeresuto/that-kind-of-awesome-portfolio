@@ -14,4 +14,8 @@ tags: ["web development", "school project"]
 publishDate: 2024-07-07
 ---
 
-this is my project that is part of my thesis back in my college days. it is a simple test paper generator wherein it utilized the fisher-yates shuffle algorithm to create a set of unique test questions.
+This is an output application system I have built alongside with my thesis for my bachelor degree back in 2023. It is a simple test paper generator that utilized Next.js framework and IndexedBD for data storage.
+
+This project is built as a response to a teachers request for a test bank that will help them generate a several set of test papers imediately.
+
+The user must first build their test bank by inputing several test items, filing up important fields such as chapter number, type, and specification. One there are enough test items, the user can now generate test papers based on their provided specifications, number of items, and chapters. The applications then will fetch the data shuffles it and map it in a dowloadable pdf file.
