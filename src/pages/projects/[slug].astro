@@ -1,0 +1,65 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+	const allProjects = await getCollection("projects");
+
+	return allProjects.map((project) => ({
+		params: { slug: project.slug },
+		props: { project },
+	}));
+}
+
+const { project } = Astro.props;
+const { Content } = await project.render();
+---
+
+<Layout title={project.data.title}>
+	<div class="container">
+        <div class="project-image" transition:name=`${project.data.title}-image`>
+			<img src={project.data.image.src} width="100%" />
+		</div>
+        
+        <div class="title-cta">
+            <h1 class="title" transition:name=`${project.data.title}-title`>
+                {project.data.title}
+            </h1>
+
+            <div class="cta">
+                {project.data.demo && <a class="cta-button" href=`${project.data.demo}` target="_blank">Demo</a>}
+    
+                {project.data.sourceCode && <a class="cta-button" href=`${project.data.sourceCode}` target="_blank">Source Code</a>}
+            </div>
+        </div>
+		<Content />
+	</div>
+</Layout>
+
+<style lang="scss">
+    .title-cta{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        margin: 8px 0;
+
+        .title {
+            color: var(--secondary);
+            text-transform: uppercase;
+        }
+        
+        .cta{
+            display: flex;
+            gap: 16px;
+        
+            .cta-button{
+                display: block;
+                width: fit-content;
+                color: var(--secondary);
+                text-decoration: none;
+                font-weight: bold;
+            }
+        }
+    }
+</style>

@@ -10,9 +10,11 @@ const projectCollection = defineCollection({
             src: z.string(),
             alt: z.string()
         }),
+        demo: z.union([z.string(), z.boolean()]),
+        sourceCode: z.union([z.string(), z.boolean()]),
         stacks: z.array(z.string()),
         tags: z.array(z.string()),
-        publishDate: z.date()
+        publishDate: z.date(),
     })
 })
 

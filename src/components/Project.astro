@@ -4,10 +4,48 @@ import { Image } from "astro:assets";
 const { projects } = Astro.props;
 ---
 
-<a href="">
-	<h3>{projects.title}</h3>
-	<p>{projects.description}</p>
-	<p>{projects.publishDate}</p>
-
-	<img src={projects.image.src} width="100%" />
+<a class="project-card" href=`/projects/${projects.slug}`>
+	<div class="project-card-title">
+		<h3 transition:name=`${projects.data.title}-title`>
+			{projects.data.title}
+		</h3>
+		<p>{projects.data.description}</p>
+	</div>
+	<div
+		class="project-card-thubnail"
+		transition:name=`${projects.data.title}-image`
+	>
+		<img src={projects.data.image.src} width="100%" />
+	</div>
 </a>
+
+<style lang="scss">
+	.project-card {
+		text-decoration: none;
+		color: var(--dark);
+
+		width: 100%;
+
+		display: grid;
+		grid-template-columns: 1.3fr 0.7fr;
+		gap: 0px 10px;
+
+		margin: 15px 0;
+
+		.project-card-title {
+			h3 {
+				display: block;
+				width: fit-content;
+				color: var(--secondary);
+				text-transform: uppercase;
+				padding-bottom: 5px;
+				margin-bottom: 5px;
+				border-bottom: 3px solid var(--secondary);
+			}
+
+			p {
+				font-size: var(--step-0);
+			}
+		}
+	}
+</style>
