@@ -22,9 +22,9 @@ const { Content } = await project.render();
 		</div>
         
         <div class="title-cta">
-            <h1 class="title" transition:name=`${project.data.title}-title`>
+            <h3 class="title" transition:name=`${project.data.title}-title`>
                 {project.data.title}
-            </h1>
+            </h3>
 
             <div class="cta">
                 {project.data.demo && <a class="cta-button" href=`${project.data.demo}` target="_blank">Demo</a>}
@@ -32,6 +32,13 @@ const { Content } = await project.render();
                 {project.data.sourceCode && <a class="cta-button" href=`${project.data.sourceCode}` target="_blank">Source Code</a>}
             </div>
         </div>
+
+        <div class="project-stack">
+            <p><strong>STACKS:</strong> {project.data.stacks.map((stack) => <span class="project-stack-item">{stack}</span>)}</p>
+        </div>
+
+        <hr> 
+
 		<Content />
 	</div>
 </Layout>
@@ -51,6 +58,7 @@ const { Content } = await project.render();
         
         .cta{
             display: flex;
+            align-items: center;
             gap: 16px;
         
             .cta-button{
@@ -59,7 +67,24 @@ const { Content } = await project.render();
                 color: var(--secondary);
                 text-decoration: none;
                 font-weight: bold;
+                text-align: center;
             }
+        }
+    }
+
+    .project-stack{
+        display: block;
+        margin-bottom: 8px;
+
+        p{
+            font-size: var(--step--2);
+        }
+
+        .project-stack-item{
+            background-color: var(--primary);
+            margin: 8px 4px;
+            padding: 4px 8px;
+            border-radius: 16px;
         }
     }
 </style>
