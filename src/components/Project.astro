@@ -6,9 +6,9 @@ const { projects } = Astro.props;
 
 <a class="project-card" href=`/projects/${projects.slug}`>
 	<div class="project-card-title">
-		<h3 transition:name=`${projects.data.title}-title`>
+		<h5 transition:name=`${projects.data.title}-title`>
 			{projects.data.title}
-		</h3>
+		</h5>
 		<p>{projects.data.description}</p>
 	</div>
 	<div
@@ -33,7 +33,7 @@ const { projects } = Astro.props;
 		margin: 15px 0;
 
 		.project-card-title {
-			h3 {
+			h5 {
 				display: block;
 				width: fit-content;
 				color: var(--secondary);
