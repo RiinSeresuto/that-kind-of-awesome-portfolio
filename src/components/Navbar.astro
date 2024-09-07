@@ -1,15 +1,40 @@
 ---
 const pathName = new URL(Astro.request.url).pathname;
 const currentPath = pathName.slice(1);
+
+const active = "navUnderline";
 ---
 
 <nav>
-	<a class={currentPath === "" ? "active" : ""} href="/">Home</a>
+	<a class={currentPath === "" ? "active" : ""} href="/">
+		<span>Home</span>
+		{
+			currentPath === "" ? (
+				<div class="underline" transition:name={active} />
+			) : (
+				""
+			)
+		}
+	</a>
 	<a class={currentPath.includes("about") ? "active" : ""} href="/about">
-		About
+		<span>About</span>
+		{
+			currentPath.includes("about") ? (
+				<div class="underline" transition:name={active} />
+			) : (
+				""
+			)
+		}
 	</a>
 	<a class={currentPath.includes("projects") ? "active" : ""} href="/projects">
-		Projects
+		<span>Projects</span>
+		{
+			currentPath.includes("projects") ? (
+				<div class="underline" transition:name={active} />
+			) : (
+				""
+			)
+		}
 	</a>
 </nav>
 
@@ -26,9 +51,16 @@ const currentPath = pathName.slice(1);
 			text-decoration: none;
 			font-weight: bold;
 
-			&.active {
-				// color: var(--primary);
-				border-bottom: 3.5px solid var(--dark);
+			// &.active {
+			// 	// color: var(--primary);
+			// 	border-bottom: 3.5px solid var(--dark);
+			// }
+
+			.underline {
+				width: 100%;
+				height: 3.5px;
+				background-color: var(--dark);
+				margin-top: 5px;
 			}
 		}
 	}
