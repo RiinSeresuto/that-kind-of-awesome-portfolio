@@ -1,5 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import dayjs from "dayjs";
 import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
@@ -16,15 +17,15 @@ const { Content } = await project.render();
 ---
 
 <Layout title={project.data.title}>
-	<div class="container">
-        <div class="project-image" transition:name=`${project.data.title}-image`>
-			<img src={project.data.image.src} width="100%" />
-		</div>
-        
+	<div class="container">    
         <div class="title-cta">
-            <h3 class="title" transition:name=`${project.data.title}-title`>
+            <h2 class="title" transition:name=`${project.data.title}-title`>
                 {project.data.title}
-            </h3>
+            </h2>
+        </div>
+
+        <div class="blog-data">
+            <p class="blog-data--date" transition:name=`${project.data.title}-date`>{dayjs(project.data.publishDate).format("MMMM D, YYYY")}</p>
 
             <div class="cta">
                 {project.data.demo && <a class="cta-button" href=`${project.data.demo}` target="_blank">Demo</a>}
@@ -32,6 +33,10 @@ const { Content } = await project.render();
                 {project.data.sourceCode && <a class="cta-button" href=`${project.data.sourceCode}` target="_blank">Source Code</a>}
             </div>
         </div>
+
+        <div class="project-image" transition:name=`${project.data.title}-image`>
+			<img src={project.data.image.src} width="100%" />
+		</div>
 
         <div class="project-stack">
             <p><strong>STACKS:</strong> {project.data.stacks.map((stack) => <span class="project-stack-item">{stack}</span>)}</p>
@@ -45,17 +50,28 @@ const { Content } = await project.render();
 
 <style lang="scss">
     .title-cta{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-
         margin: 8px 0;
 
         .title {
             color: var(--secondary);
             text-transform: uppercase;
         }
-        
+    }
+
+    .blog-data{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+
+        &--date{
+            font-size: var(--step--1);
+            // font-weight: bold;
+            font-style: italic;
+            color: var(--secondary);
+            opacity: 0.8;
+        }
+
         .cta{
             display: flex;
             align-items: center;
