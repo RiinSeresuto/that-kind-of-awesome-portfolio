@@ -4,12 +4,19 @@ import { getCollection } from "astro:content";
 import Project from "../Project.astro";
 
 const allProjects = await getCollection("projects");
+const latestProjects = allProjects
+	.sort(
+		(a, b) =>
+			new Date(b.data.publishDate).getTime() -
+			new Date(a.data.publishDate).getTime()
+	)
+	.slice(0, 3);
 ---
 
 <div class="about">
 	<h2 class="about-title">Projects</h2>
 
-	{allProjects.map((project) => <Project projects={project} />)}
+	{latestProjects.map((project) => <Project projects={project} />)}
 </div>
 
 <style lang="scss">

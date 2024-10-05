@@ -1,9 +1,16 @@
 ---
+import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
+import Project from "../components/Project.astro";
 
+const allProjects = await getCollection("projects");
 const title = "Projects";
 ---
 
 <Layout title={title}>
-	<h1>this is the projects page of my porfolio</h1>
+	<div class="container">
+		<h1>{title}</h1>
+
+		{allProjects.map((project) => <Project projects={project} />)}
+	</div>
 </Layout>
