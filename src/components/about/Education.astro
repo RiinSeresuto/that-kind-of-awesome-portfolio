@@ -1,0 +1,67 @@
+---
+const education = [
+	{
+		school: "Don Mariano Marcos Memorial State University",
+		degree: "BACHELOR OF SCIENCE IN COMPUTER SCIENCE",
+		address: "Agoo, La Union",
+		graduation: "June 2023",
+		relevantCourseWork: [
+			"Web Development",
+			"Software Engineering",
+			"Data Structures and Algorithms",
+			"Object Oriented Programming",
+			"Operating Systems",
+			"Database Management Systems",
+		],
+	},
+];
+---
+
+{
+	education.map((edu) => (
+		<div class="education">
+			<div class="school">
+				<div class="school-name">{edu.school}</div>
+				<div class="school-address">{edu.address}</div>
+			</div>
+			<div class="degree">
+				<div class="degree-program">{edu.degree}</div>
+				<div class="degree-graduation">{edu.graduation}</div>
+			</div>
+			<div class="coursework">
+				<div class="coursework-title">Coursework:</div>
+				<div class="courses">
+					{edu.relevantCourseWork.map((course, index) => (
+						<span>
+							{course} {index < edu.relevantCourseWork.length - 1 ? ", " : ""}
+						</span>
+					))}
+				</div>
+			</div>
+		</div>
+	))
+}
+
+<style lang="scss">
+	.education {
+		margin: 16px 0;
+
+		.school,
+		.degree {
+			display: flex;
+			justify-content: space-between;
+			margin: 8px;
+		}
+
+		.coursework {
+			display: flex;
+			gap: 8px;
+			margin: 8px;
+		}
+
+		.school-name,
+		.degree-program {
+			font-weight: 700;
+		}
+	}
+</style>

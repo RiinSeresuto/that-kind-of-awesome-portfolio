@@ -25,10 +25,11 @@ const workExperienceCollection = defineCollection({
         organization: z.string(),
         address: z.string(),
         period: z.string(),
+        body: z.array(z.string())
     })
 })
 
 export const collections = {
     'projects' : projectCollection,
-    'work-experience' : workExperienceCollection
+    'workExperience' : workExperienceCollection
 }
