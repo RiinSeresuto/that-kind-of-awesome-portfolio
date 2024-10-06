@@ -1,7 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/index/Hero.astro";
-import About from "../components/index/About.astro";
+import Projects from "../components/index/Projects.astro";
 
 const title = "Home";
 ---
@@ -9,43 +9,18 @@ const title = "Home";
 <Layout title={title}>
 	<section id="hero">
 		<div class="container">
-			<div class="grid">
-				<Hero />
-				<div></div>
-			</div>
-		</div>
-	</section>
-	<section id="about">
-		<div class="container">
-			<div class="grid">
-				<About />
-				<div></div>
-			</div>
+			<Hero />
 		</div>
 	</section>
 	<section id="projects">
-		<div class="container grid">
-			<div class="col-9">
-				<p>
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil vitae
-					eos soluta quaerat repudiandae in quos deserunt labore libero,
-					accusantium atque modi excepturi aut, dolore delectus! Ab ducimus iure
-					in!
-				</p>
-			</div>
+		<div class="container">
+			<Projects />
 		</div>
 	</section>
 </Layout>
 
 <style lang="scss">
 	#hero {
-		min-height: calc(100vh - var(--headerHeight));
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
-
-	#about {
-		background-color: var(--tertiary);
+		height: fit-content;
 	}
 </style>

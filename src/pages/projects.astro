@@ -1,0 +1,22 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../layouts/Layout.astro";
+import Project from "../components/Project.astro";
+
+const allProjects = await getCollection("projects");
+
+allProjects.sort(
+	(a, b) =>
+		new Date(b.data.publishDate).getTime() -
+		new Date(a.data.publishDate).getTime()
+);
+const title = "Projects";
+---
+
+<Layout title={title}>
+	<div class="container">
+		<h1>{title}</h1>
+
+		{allProjects.map((project) => <Project projects={project} />)}
+	</div>
+</Layout>

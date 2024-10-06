@@ -1,0 +1,41 @@
+<div id="logo">
+	<div id="r"><span>r</span></div>
+	<div id="e1"><span>e</span></div>
+	<div id="n"><span>e</span></div>
+	<div id="e2"><span>n</span></div>
+</div>
+
+<style lang="scss">
+	#logo {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		color: var(--dark);
+
+		div {
+			font-size: var(--step-4);
+			font-weight: 700;
+			line-height: 0.8;
+			aspect-ratio: 1;
+			display: block;
+
+			span {
+				display: block;
+				margin: auto;
+				height: fit-content;
+				width: fit-content;
+			}
+		}
+
+		#e1 {
+			transform: rotate(90deg);
+		}
+
+		#e2 {
+			transform: rotate(calc(90deg * 2));
+		}
+
+		#n {
+			transform: rotate(calc(90deg * 3));
+		}
+	}
+</style>

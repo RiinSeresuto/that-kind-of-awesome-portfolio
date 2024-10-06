@@ -1,0 +1,32 @@
+---
+import { getCollection } from "astro:content";
+
+import Project from "../Project.astro";
+
+const allProjects = await getCollection("projects");
+const latestProjects = allProjects
+	.sort(
+		(a, b) =>
+			new Date(b.data.publishDate).getTime() -
+			new Date(a.data.publishDate).getTime()
+	)
+	.slice(0, 3);
+---
+
+<div class="about">
+	<h2 class="about-title">Projects</h2>
+
+	{latestProjects.map((project) => <Project projects={project} />)}
+</div>
+
+<style lang="scss">
+	.about {
+		display: block;
+		width: 100%;
+
+		.about-title {
+			font-size: var(--step-3);
+			color: var(--secondary);
+		}
+	}
+</style>

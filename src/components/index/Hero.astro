@@ -1,4 +1,7 @@
 ---
+import { Image } from "astro:assets";
+import computerImage from "../../assets/images/computer.png";
+
 let skills = [
 	{
 		name: "HTML",
@@ -51,19 +54,56 @@ const animationDuration = "30s";
 ---
 
 <style lang="scss" define:vars={{ animationDuration }}>
+	.col-2 {
+		display: grid;
+		grid-template-columns: 3fr 1fr;
+		column-gap: 1rem;
+	}
+
+	@media (max-width: 600px) {
+		.col-2 {
+			display: block;
+		}
+	}
+
+	/* Tablets (max-width: 768px) */
+	@media (max-width: 768px) {
+		.col-2 {
+			grid-template-columns: 2fr 1fr;
+			column-gap: 0.5rem;
+		}
+	}
+
+	/* Small Laptops (max-width: 1024px) */
+	@media (max-width: 1024px) {
+		.col-2 {
+			grid-template-columns: 3fr 1fr;
+			column-gap: 1rem;
+		}
+	}
+
+	/* Desktops and larger devices (min-width: 1025px) */
+	@media (min-width: 1025px) {
+		.col-2 {
+			grid-template-columns: 3fr 1fr;
+			column-gap: 1.5rem;
+		}
+	}
+
 	#hero-content {
 		display: block;
 		width: 100%;
+		padding: 32px 0;
 	}
 
 	.hero--title {
-		font-size: var(--step-4);
+		font-size: var(--step-3);
 		color: var(--secondary);
 	}
 
 	.hero--subtitle {
 		font-style: italic;
-		font-size: var(--step-1);
+		font-size: var(--step-0);
 
 		#animatedWords {
 			color: var(--primary);
@@ -73,6 +113,14 @@ const animationDuration = "30s";
 		#animatedWords.fade {
 			opacity: 0;
 		}
+	}
+
+	.hero--image {
+		width: 100%;
+		height: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 	}
 
 	.hero--skills {
@@ -117,12 +165,24 @@ const animationDuration = "30s";
 </style>
 
 <div id="hero-content">
-	<h1 class="hero--title">Full-stack Developer</h1>
-	<p class="hero--subtitle">
-		Hullo, I'm Rene Baribal. <span id="article">A</span>
-		<strong><span id="animatedWords">passionate</span></strong> web application developer
-		<br /> based in the City of Quezon, Philippines
-	</p>
+	<div class="col-2">
+		<div class="hero--greetings">
+			<h1 class="hero--title">hi! i'm rene🍀</h1>
+			<p class="hero--subtitle">full-stack developer</p>
+			<p class="herro--about">
+				I am a developer, based on the Philippines. I create things that live on
+				the internet, whether that be websites, applications, or anything in
+				between.
+			</p>
+		</div>
+		<div class="hero--image">
+			<img
+				src={computerImage.src}
+				alt="Computer on top of desk with plants around it"
+				style={`width: clamp(100px, 400px, 75%);`}
+			/>
+		</div>
+	</div>
 
 	<div class="hero--skills">
 		<h2 class="hero--skills-title">Skills</h2>
@@ -137,6 +197,7 @@ const animationDuration = "30s";
 							style={`
                                 animation-delay: calc(${animationDuration} / ${skillsCount} * (${skillsCount} - ${index}) * -1)
                             `}
+							loading="lazy"
 						/>
 					</>
 				))
@@ -144,33 +205,3 @@ const animationDuration = "30s";
 		</div>
 	</div>
 </div>
-
-<script>
-	let i = 0;
-	let phrase = ["passionate", "driven", "enthusiastic", "committed"];
-	let currentWord = phrase[0];
-
-	const article = document.getElementById("article");
-	const vowels = ["a", "e", "i", "o", "u"];
-
-	const changingWord = document.getElementById("animatedWords");
-
-	setInterval(() => {
-		changingWord.classList.add("fade");
-
-		setTimeout(() => {
-			currentWord = phrase[(i = (i + 1) % phrase.length)];
-
-			changingWord.textContent = currentWord;
-			changingWord.classList.remove("fade");
-
-			const firstLetter = currentWord.trim().charAt(0).toLowerCase();
-
-			if (vowels.includes(firstLetter)) {
-				article.textContent = "An";
-			} else {
-				article.textContent = "A";
-			}
-		}, 500);
-	}, 2000);
-</script>
