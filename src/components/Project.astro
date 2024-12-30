@@ -52,4 +52,21 @@ const { projects } = Astro.props;
 			align-items: center;
 		}
 	}
+
+	@media (max-width: 480px) {
+		.project-card {
+			grid-template-columns: 1fr;
+			grid-template-areas:
+				"thumbnail"
+				"title";
+		}
+
+		.project-card-title {
+			grid-area: title;
+		}
+
+		.project-card-thumbnail {
+			grid-area: thumbnail;
+		}
+	}
 </style>
