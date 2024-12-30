@@ -10,7 +10,7 @@ const { projects } = Astro.props;
 		<p>{projects.data.description}</p>
 	</div>
 	<div
-		class="project-card-thubnail"
+		class="project-card-thumbnail"
 		transition:name=`${projects.data.title}-image`
 	>
 		<img src={projects.data.image.src} width="100%" />
@@ -44,6 +44,12 @@ const { projects } = Astro.props;
 			p {
 				font-size: var(--step-0);
 			}
+		}
+
+		.project-card-thumbnail {
+			display: flex;
+			justify-content: center;
+			align-items: center;
 		}
 	}
 </style>
