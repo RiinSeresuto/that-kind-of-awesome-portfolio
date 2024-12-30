@@ -39,10 +39,10 @@ let skills = [
 		name: "Yii",
 		logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/yii/yii-original.svg",
 	},
-	// {
-	// 	name: "CSS",
-	// 	logo: "",
-	// },
+	{
+		name: "Laravel",
+		logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/laravel/laravel-original.svg",
+	},
 	// {
 	// 	name: "CSS",
 	// 	logo: "",
@@ -132,34 +132,25 @@ const animationDuration = "30s";
 			margin-bottom: 1rem;
 		}
 
-		.skills-wrapper {
-			width: 100%;
-			position: relative;
-			height: var(--step-2);
-			overflow: hidden;
-			mask-image: linear-gradient(
-				to right,
-				hsl(0 0% 0% / 0),
-				hsl(0 0% 0% / 1) 20%,
-				hsl(0 0% 0% / 1) 80%,
-				hsl(0 0% 0% / 0)
-			);
+		.hero--skills-wrapper {
+			display: flex;
+			gap: 4px;
+			flex-wrap: wrap;
 
-			.skills {
-				height: var(--step-2);
-				position: absolute;
-				left: 100%;
-				animation-name: scrollLeft;
-				animation-duration: var(--animationDuration);
-				animation-timing-function: linear;
-				animation-iteration-count: infinite;
+			.hero--skills-skill {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+
+				gap: 8px;
+				padding: 4px 8px;
+				border: var(--primary) solid 1px;
+				border-radius: 3px;
+
+				.hero--skills-logo {
+					height: var(--step-0);
+				}
 			}
-		}
-	}
-
-	@keyframes scrollLeft {
-		to {
-			left: calc(-1 * var(--step-2));
 		}
 	}
 </style>
@@ -186,20 +177,18 @@ const animationDuration = "30s";
 
 	<div class="hero--skills">
 		<h2 class="hero--skills-title">Skills</h2>
-		<div class="skills-wrapper">
+		<div class="hero--skills-wrapper">
 			{
-				skills.map((skill, index) => (
-					<>
+				skills.map((skill) => (
+					<div class="hero--skills-skill">
 						<img
-							class="skills"
+							class="hero--skills-logo"
 							src={skill.logo}
-							title={skill.name}
-							style={`
-                                animation-delay: calc(${animationDuration} / ${skillsCount} * (${skillsCount} - ${index}) * -1)
-                            `}
+							title={skill.name + " logo"}
 							loading="lazy"
 						/>
-					</>
+						<div class="hero--skills-name">{skill.name}</div>
+					</div>
 				))
 			}
 		</div>

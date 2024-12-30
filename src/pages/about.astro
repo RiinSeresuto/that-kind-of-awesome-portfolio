@@ -1,5 +1,10 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import WorkExperience from "../components/about/WorkExperience.astro";
+import Education from "../components/about/Education.astro";
+import { getCollection } from "astro:content";
+
+const allWorkExperiences = await getCollection("workExperience");
 
 const title = "About";
 ---
@@ -8,5 +13,30 @@ const title = "About";
 	<div class="container">
 		<h3><center>Rene Baribal</center></h3>
 		<p><center><em>Web Developer</em></center></p>
+
+		<p id="about-intro" class="text-center">
+			I'm a computer science graduate with a strong focus on web development,
+			specializing in both front-end and back-end technologies. I build
+			functional, efficient web applications and prioritize clean code and
+			scalable solutions.
+		</p>
+
+		<center><em><strong>WORK EXPERIENCE</strong></em></center>
+
+		{allWorkExperiences.map((work) => <WorkExperience works={work} />)}
+
+		<center><em><strong>EDUCATION</strong></em></center>
+
+		<Education />
 	</div>
 </Layout>
+
+<style lang="scss">
+	#about-intro {
+		margin-bottom: 24px;
+	}
+
+	.text-center {
+		text-align: center;
+	}
+</style>

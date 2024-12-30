@@ -1,6 +1,4 @@
 ---
-import { Image } from "astro:assets";
-
 const { projects } = Astro.props;
 ---
 
@@ -12,7 +10,7 @@ const { projects } = Astro.props;
 		<p>{projects.data.description}</p>
 	</div>
 	<div
-		class="project-card-thubnail"
+		class="project-card-thumbnail"
 		transition:name=`${projects.data.title}-image`
 	>
 		<img src={projects.data.image.src} width="100%" />
@@ -46,6 +44,29 @@ const { projects } = Astro.props;
 			p {
 				font-size: var(--step-0);
 			}
+		}
+
+		.project-card-thumbnail {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.project-card {
+			grid-template-columns: 1fr;
+			grid-template-areas:
+				"thumbnail"
+				"title";
+		}
+
+		.project-card-title {
+			grid-area: title;
+		}
+
+		.project-card-thumbnail {
+			grid-area: thumbnail;
 		}
 	}
 </style>

@@ -1,0 +1,46 @@
+---
+const { works } = Astro.props;
+---
+
+<div class="work-experience">
+	<div class="organization">
+		<div class="organization-name">{works.data.organization}</div>
+		<div class="organization-address">{works.data.address}</div>
+	</div>
+
+	<div class="job">
+		<div class="job-position">{works.data.position}</div>
+		<div class="job-period">{works.data.period}</div>
+	</div>
+
+	<ul class="job-description">
+		{works.data.body.map((lists) => <li>{lists}</li>)}
+	</ul>
+</div>
+
+<style lang="scss">
+	.work-experience {
+		margin: 16px 0;
+
+		.organization,
+		.job {
+			display: flex;
+			justify-content: space-between;
+			margin: 8px;
+		}
+
+		.organization-name,
+		.job-position {
+			font-weight: 700;
+		}
+
+		.job-description {
+			margin-top: 8px;
+			margin-left: 32px;
+
+			li {
+				margin: 8px 0;
+			}
+		}
+	}
+</style>

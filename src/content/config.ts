@@ -18,6 +18,18 @@ const projectCollection = defineCollection({
     })
 })
 
+const workExperienceCollection = defineCollection({
+    type: 'content',
+    schema: z.object({
+        position: z.string(),
+        organization: z.string(),
+        address: z.string(),
+        period: z.string(),
+        body: z.array(z.string())
+    })
+})
+
 export const collections = {
-    'projects' : projectCollection
+    'projects' : projectCollection,
+    'workExperience' : workExperienceCollection
 }
