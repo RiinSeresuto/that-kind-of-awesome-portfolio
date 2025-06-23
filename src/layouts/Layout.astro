@@ -1,6 +1,6 @@
 ---
 import { ClientRouter } from "astro:transitions";
-import "../styles/app.css";
+import "../assets/app.css";
 import Navbar from "../components/Navbar.astro";
 import Logo from "../components/Logo.astro";
 
@@ -8,7 +8,7 @@ const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="cupcake">
     <head>
         <meta charset="UTF-8" />
         <meta name="description" content="Astro description" />
@@ -20,31 +20,17 @@ const { title } = Astro.props;
         <ClientRouter />
     </head>
     <body>
-        <header>
-            <div class="container" id="header">
+        <div class="flex flex-col items-center w-full">
+            <header class="max-w-4xl w-full flex justify-between">
                 <Logo />
                 <Navbar />
+            </header>
+
+            <div class="max-w-4xl w-full">
+                <main>
+                    <slot />
+                </main>
             </div>
-        </header>
-
-        <div class="main-body">
-            <main>
-                <slot />
-            </main>
         </div>
-    </body><style lang="scss">
-        .main-body {
-            position: relative;
-            width: 100%;
-        }
-
-        header {
-            #header {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                height: var(--headerHeight);
-            }
-        }
-    </style>
+    </body>
 </html>
