@@ -50,7 +50,7 @@ let skills = [
 ];
 ---
 
-<div class="hero min-h-screen">
+<div class="hero pt-30 pb-30">
     <div class="hero-content flex-col lg:flex-row-reverse">
         <img
             src={computerImage.src}
@@ -58,23 +58,39 @@ let skills = [
             style={`width: clamp(100px, 400px, 75%);`}
         />
         <div>
-            <h1 class="text-5xl font-bold">hi! i'm rene🍀</h1>
+            <h1 class="text-5xl font-bold font-primary">hi! i'm rene🍀</h1>
             <p class="py-6">
                 I am a developer, based on the Philippines. I create things that
                 live on the internet, whether that be websites, applications, or
                 anything in between.
             </p>
-            <button class="btn btn-primary">Get Started</button>
+            <div class="flex gap-4">
+                <a href="https://github.com/RiinSeresuto" target="_blank">
+                    <img
+                        class="h-8"
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg"
+                    />
+                </a>
+                <a
+                    href="https://www.linkedin.com/in/rene-baribal-b6b0a9171"
+                    target="_blank"
+                >
+                    <img
+                        class="h-8"
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linkedin/linkedin-original.svg"
+                    />
+                </a>
+            </div>
         </div>
     </div>
 </div>
 
-<div>
+<div class="flex flex-wrap gap-3">
     {
         skills.map((skill) => (
-            <div class="badge badge-lg">
+            <div class="h-8 w-fit gap-3 flex items-center p-1 border-2 rounded border-accent">
                 <img
-                    class="hero--skills-logo"
+                    class="h-full"
                     src={skill.logo}
                     title={skill.name + " logo"}
                     loading="lazy"
