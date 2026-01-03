@@ -10,15 +10,18 @@
             title: "Test Paper Generator",
             description:
                 "A web-based test paper generator build for generating different sets of text paper from the provided test items.",
+            stacks: ["NextJS", "Bulma CSS", "IndexedDB"],
         },
         {
             title: "Advice Generator",
             description: "A simple advice generator that uses advice API",
+            stacks: ["Astro JS"],
         },
         {
             title: "Portfolio Website",
             description:
                 "A little space in the internet for curating my projects.",
+            stacks: ["Nuxt JS", "SASS"],
         },
     ];
 
@@ -31,6 +34,7 @@
                 "Provided ongoing production support",
                 "Refactored legacy components to improve performance and stability",
             ],
+            stacks: ["Yii2", "Bootstrap 3", "JQuery"],
         },
         {
             title: "DILG Official Website",
@@ -39,6 +43,7 @@
                 "Co-developed and integrated core modules, user interface design, enhancements, and improvement of performance",
                 "Provided ongoing production support",
             ],
+            stacks: ["Yii2", "Bootstrap 4", "JQuery"],
         },
         {
             title: "Local Government Unit Support System",
@@ -46,6 +51,7 @@
             responsibilities: [
                 "Enhanced the application's user interface by integrating a template to the used framework.",
             ],
+            stacks: ["Yii2", "Bootstrap 5", "JQuery"],
         },
         {
             title: "Electronic Client Satisfaction Measument Survey",
@@ -54,6 +60,7 @@
                 "Provided ongoing production support",
                 "Refactored legacy components to improve performance and stability",
             ],
+            stacks: ["Yii2", "Bootstrap 3", "JQuery"],
         },
     ];
 </script>
@@ -80,6 +87,16 @@
                 </template>
 
                 <template #title>
+                    <div class="stacks">
+                        <Badge
+                            v-for="stack in project.stacks"
+                            size="small"
+                            severity="contrast"
+                            class="badge-skill"
+                            :value="stack"
+                        >
+                        </Badge>
+                    </div>
                     <strong>{{ project.title.toLocaleUpperCase() }}</strong>
                 </template>
 
@@ -118,6 +135,16 @@
                 </template>
 
                 <template #title>
+                    <div class="stacks">
+                        <Badge
+                            v-for="stack in project.stacks"
+                            size="small"
+                            severity="contrast"
+                            class="badge-skill"
+                            :value="stack"
+                        >
+                        </Badge>
+                    </div>
                     <strong>{{ project.title.toLocaleUpperCase() }}</strong>
                 </template>
 
@@ -143,5 +170,16 @@
         object-fit: cover;
         display: block;
         border-radius: inherit;
+    }
+
+    .stacks {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px;
+        margin-bottom: 8px;
+    }
+
+    .badge-skill {
+        background-color: var(--p-card-color);
     }
 </style>
