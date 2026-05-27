@@ -10,7 +10,8 @@ export default defineNuxtConfig({
         '~/assets/scss/main.scss'
     ],
     modules: [
-        '@primevue/nuxt-module'
+        '@primevue/nuxt-module',
+        '@nuxt/content'
     ],
     primevue: {
         options: {
