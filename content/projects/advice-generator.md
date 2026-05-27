@@ -7,5 +7,5 @@ description: A simple advice generator that uses advice API
 stacks:
     - AstroJS
 
-screenshot: ""
+screenshot: "/images/projects/screenshot-advice.png"
 ---

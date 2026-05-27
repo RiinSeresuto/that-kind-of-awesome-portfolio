@@ -8,5 +8,5 @@ stacks:
     - Nuxt JS
     - SASS
 
-screenshot: ""
+screenshot: "/images/projects/screenshot-portfolio.png"
 ---

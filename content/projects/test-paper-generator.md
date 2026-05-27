@@ -9,5 +9,5 @@ stacks:
     - Bulma CSS
     - IndexedDB
 
-screenshot: ""
+screenshot: "/images/projects/screenshot-test-generator.png"
 ---
