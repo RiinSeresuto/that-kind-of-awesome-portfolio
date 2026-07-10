@@ -5,8 +5,13 @@
         title: "Projects",
     });
 
-    const { data: projects } = await useAsyncData("projects", () =>
-        queryCollection("projects").all(),
+    const { data: projects, pending } = useLazyAsyncData(
+        "projects",
+        () => queryCollection("projects").all(),
+        {
+            server: false,
+            default: () => [],
+        },
     );
 
     const personalProjects = computed(() =>
@@ -22,6 +27,8 @@
     <div>
         <h1>PROJECTS</h1>
 
+        <p v-if="pending">Loading projects...</p>
+
         <h2>Professional / Handled Projects</h2>
 
         <div class="project-grid">
@@ -36,6 +43,8 @@
                         :src="project.screenshot || placeholderImage"
                         alt="Project screenshot"
                         class="project-image"
+                        loading="lazy"
+                        decoding="async"
                     />
                 </template>
 
@@ -84,6 +93,8 @@
                         :src="project.screenshot || placeholderImage"
                         alt="Project screenshot"
                         class="project-image"
+                        loading="lazy"
+                        decoding="async"
                     />
                 </template>
 
